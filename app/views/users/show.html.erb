@@ -1,0 +1,9 @@
+<div class="">
+  <%= @user.name | @user.events.count %>
+</div>
+
+<ul>
+<% @events_created.each do |event| %>
+  <li><%= event.name + ' | ' + event.date %></li>
+<% end %>
+</ul>
