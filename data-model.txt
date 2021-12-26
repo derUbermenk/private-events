@@ -20,6 +20,5 @@ user#show
   user.events.all
 
 
-# how to create a controller for a through table rails
-event card -- attend button true
-  user -> attendee_event through table
+#-----------------------#
+rails g scaffold Event name:string data:date location:string
