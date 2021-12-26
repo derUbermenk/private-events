@@ -1,0 +1,25 @@
+Users
+name
+# has_many :events, foreign_key: creator_id 
+# has_and_belongs_to_many attended_events, foreign_key: attendee_id 
+
+Events
+name
+date
+location
+# belongs_to :creator, class: User 
+# has_and_belongs_to_many attendee, class: User 
+
+
+rails g scaffold Event name:string date:date location:string organizer_id:reference to User
+rails g scaffold User name:string 
+
+root events#index
+
+user#show
+  user.events.all
+
+
+# how to create a controller for a through table rails
+event card -- attend button true
+  user -> attendee_event through table
