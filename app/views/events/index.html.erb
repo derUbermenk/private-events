@@ -18,6 +18,8 @@
         <td><%= event.name %></td>
         <td><%= event.data %></td>
         <td><%= event.location %></td>
+        <td><%= event.creator.name%></td>
+        <td><%= link_to 'Attend', attendances_path(attendance: [event_id: event.id]), method: :post %> </td>
         <td><%= link_to 'Show', event %></td>
         <td><%= link_to 'Edit', edit_event_path(event) %></td>
         <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>

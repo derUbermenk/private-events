@@ -7,12 +7,12 @@
 
 <p>
   <strong>Creator:</strong>
-  <%= @event.creator %>
+  <%= @event.creator.email %>
 </p>
 
 <p>
   <strong>Data:</strong>
-  <%= @event.data %>
+  <%= @event.date %>
 </p>
 
 <p>
@@ -20,5 +20,7 @@
   <%= @event.location %>
 </p>
 
+
+<%= link_to 'Attend', attendances_path(attendance: [event_id: @event.id]), method: :post  %>
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
