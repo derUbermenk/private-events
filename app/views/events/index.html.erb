@@ -13,7 +13,7 @@
   </thead>
 
   <tbody>
-    <% @events.each do |event| %>
+    <% @events.is_public.each do |event| %>
       <tr>
         <td><%= event.name %></td>
         <td><%= event.date %></td>
