@@ -4,6 +4,9 @@ class AttendancesController < ApplicationController
   def create
     current_user.attendances.create(attend_params)
 
+    # destroy the invite if the linke is coming from an invite 
+    Invitation.find(params[:invitation_id]).destroy
+
     redirect_back(fallback_location: root_path)
   end
 
@@ -19,5 +22,4 @@ class AttendancesController < ApplicationController
   def attend_params
     params.permit(:event_id)
   end
-
 end

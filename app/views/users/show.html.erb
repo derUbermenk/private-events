@@ -32,13 +32,19 @@
       <strong>Future events</strong>
       <ul>
       <% @attended_events.future_events.each do |future_event| %>
-        <li><%= "#{future_event.name} | #{future_event.date}" %></li>
+        <li>
+            <%= link_to future_event.name, future_event %>
+            <%= " | #{future_event.date}" %>
+        </li>
       <% end %>
       </ul>
       <strong>Past events</strong>
       <ul>
       <% @attended_events.past_events.each do |past_event| %>
-        <li><%= "#{past_event.name} | #{past_event.date}" %></li>
+        <li>
+            <%= link_to past_event.name, past_event%>
+            <%= " | #{past_event.date}" %>
+        </li>
       <% end %>
       </ul>
     <% else %>
@@ -52,8 +58,8 @@
     <strong>Invites</strong><br>
     <% current_user.invitations_received.each do |invitation| %>
       <%= invitation.event.name %> | 
-      <%= link_to 'Accept'%>
-      <%= link_to 'Reject'%>
+      <%= link_to 'Accept', attendances_path(event_id: invitation.event.id, invitation_id: invitation.id ), method: :post %>
+      <%= link_to 'Reject', invitation_path(invitation), method: :delete %>
     <% end %>
     <br>
   </div>
