@@ -26,6 +26,11 @@
     <%= form.text_field :location %>
   </div>
 
+  <div class="field">
+    <%= form.label :is_private, 'Private' %> 
+    <%= form.check_box :is_private %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

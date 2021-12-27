@@ -1,33 +1,55 @@
-<div class="">
-  <%= "#{@user.name} | #{@user.events.count}" %>
+<div>
+  <%= "#{@user.name} | #{@user.events.count}" %><br>
+  <%= link_to 'Create Event', new_event_path %>
 </div>
 
-<br>
-<strong>Events Created</strong>
-<% if @created_events.any? %>
-  <ul>
-  <% @created_events.each do |event| %>
-    <li><%= "#{event.name} | #{event.date}" %></li>
-  <% end %>
-  </ul>
-<% else %>
-  <i>No events created</i>
-<% end %>
+<div>
+  <strong>Events Created</strong>
+  <div>
+    <% if @created_events.any? %>
+      <ul>
+      <% @created_events.each do |event| %>
+        <li><%= "#{event.name} | #{event.date}" %> | 
+          <% if current_user == @user %>
+            <%= link_to 'Edit', edit_event_path(event) %> 
+            <% if event.is_private == true %>
+              | <%= link_to 'Invite People' %>
+            <% end %>
+          <% end %>
+        </li>
+      <% end %>
+      </ul>
+    <% else %>
+      <i>No events created</i>
+    <% end %>
+  </div>
+</div>
 
-<strong>Events Joined</strong> <br>
-<% if @attended_events.any? %>
-  <strong>Future events</strong>
-  <ul>
-  <% @attended_events.future_events.each do |future_event| %>
-    <li><%= "#{future_event.name} | #{future_event.date}" %></li>
-  <% end %>
-  </ul>
-  <strong>Past events</strong>
-  <ul>
-  <% @attended_events.past_events.each do |past_event| %>
-    <li><%= "#{past_event.name} | #{past_event.date}" %></li>
-  <% end %>
-  </ul>
-<% else %>
-  <i>No events attended</i>
+<div>
+  <strong>Events Joined</strong>
+  <div>
+    <% if @attended_events.any? %>
+      <strong>Future events</strong>
+      <ul>
+      <% @attended_events.future_events.each do |future_event| %>
+        <li><%= "#{future_event.name} | #{future_event.date}" %></li>
+      <% end %>
+      </ul>
+      <strong>Past events</strong>
+      <ul>
+      <% @attended_events.past_events.each do |past_event| %>
+        <li><%= "#{past_event.name} | #{past_event.date}" %></li>
+      <% end %>
+      </ul>
+    <% else %>
+      <i>No events attended</i>
+    <% end %>
+  </div>
+</div>
+
+<% if current_user == @user %>
+  <div>
+    <strong>Invites</strong>
+    <% # invites here %>
+  </div>
 <% end %>
