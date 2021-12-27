@@ -20,5 +20,9 @@ user#show
   user.events.all
 
 
-#-----------------------#
-rails g scaffold Event name:string data:date location:string
+
+# private events
+set default value to public
+
+add is_private column to Event if only_show public events in index
+

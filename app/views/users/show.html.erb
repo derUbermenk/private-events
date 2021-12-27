@@ -18,13 +18,13 @@
 <% if @attended_events.any? %>
   <strong>Future events</strong>
   <ul>
-  <% @attended_events.where('date > ?', Date.today).each do |future_event| %>
+  <% @attended_events.future_events.each do |future_event| %>
     <li><%= "#{future_event.name} | #{future_event.date}" %></li>
   <% end %>
   </ul>
   <strong>Past events</strong>
   <ul>
-  <% @attended_events.where('date < ?', Date.today).each do |past_event| %>
+  <% @attended_events.past_events.each do |past_event| %>
     <li><%= "#{past_event.name} | #{past_event.date}" %></li>
   <% end %>
   </ul>
