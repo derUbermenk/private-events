@@ -13,7 +13,7 @@ class EventsController < ApplicationController
 
   # GET /events/new
   def new
-    @event = current_user.events.build(event_params)
+    @event = current_user.events.build()
   end
 
   # GET /events/1/edit
@@ -66,6 +66,6 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.require(:event).permit(:name, :data, :location)
+      params.require(:event).permit(:name, :date, :location)
     end
 end

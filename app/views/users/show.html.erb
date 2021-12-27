@@ -1,9 +1,33 @@
 <div class="">
-  <%= @user.name | @user.events.count %>
+  <%= "#{@user.name} | #{@user.events.count}" %>
 </div>
 
-<ul>
-<% @events_created.each do |event| %>
-  <li><%= event.name + ' | ' + event.date %></li>
+<br>
+<strong>Events Created</strong>
+<% if @created_events.any? %>
+  <ul>
+  <% @created_events.each do |event| %>
+    <li><%= "#{event.name} | #{event.date}" %></li>
+  <% end %>
+  </ul>
+<% else %>
+  <i>No events created</i>
 <% end %>
-</ul>
+
+<strong>Events Joined</strong> <br>
+<% if @attended_events.any? %>
+  <strong>Future events</strong>
+  <ul>
+  <% @attended_events.where('date > ?', Date.today).each do |future_event| %>
+    <li><%= "#{future_event.name} | #{future_event.date}" %></li>
+  <% end %>
+  </ul>
+  <strong>Past events</strong>
+  <ul>
+  <% @attended_events.where('date < ?', Date.today).each do |past_event| %>
+    <li><%= "#{past_event.name} | #{past_event.date}" %></li>
+  <% end %>
+  </ul>
+<% else %>
+  <i>No events attended</i>
+<% end %>
