@@ -1,0 +1,11 @@
+<h1><strong> <%= @event.name %> Invitations </strong></h1>
+
+<% @users.each do |user| %>
+  <%= user.name %>  |
+  <% if @invited_users.include? user %>
+    <%= link_to 'Uninvite', invitation_path(@event.invitations.find_by(invitee_id: user)), method: :delete %>
+  <% else %>
+    <%= link_to 'Invite', invitations_path(invitation: { invitee_id: user.id, event_id: @event.id }), method: :post %>
+  <% end%>
+  <br>
+<% end %>

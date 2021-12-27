@@ -26,3 +26,9 @@ set default value to public
 
 add is_private column to Event if only_show public events in index
 
+invites
+event creation
+  users checkbox
+  yung mga na check lang na users yung masesendan ng invite
+  
+
