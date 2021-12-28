@@ -13,7 +13,13 @@
       <% if @events.any? %>
         <%= render(@events) %>
       <% else %>
-        <span class="is-text-weight-light">There are no events available</span>
+        <div class="card my-6" id="index-card">
+          <div class="card-content">
+            <div class="content">
+              <p class="has-text-weight-light">No events available</p>
+            </div>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>
