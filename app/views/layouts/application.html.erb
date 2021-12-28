@@ -11,14 +11,53 @@
   </head>
 
   <body>
-    <%= link_to 'Home', root_path %>
-    <% if user_signed_in? %>
-      <%= link_to 'Profile', current_user %>
-      <%= link_to 'Log out', destroy_user_session_path, method: :delete %>
-    <% else %>
-      <%= link_to 'Sign up', new_user_registration_path %>
-      <%= link_to 'Log in', new_user_session_path %>
-    <% end %>
-    <%= yield %>
+    <div id="app">
+      <% if flash[:notice] %>
+        <div class="notification is-primary global-notification">
+          <p class="notice"><%= notice %></p>
+        </div>
+      <% end %>
+      <% if flash[:alert] %>
+        <div class="notification is-danger global-notification">
+          <p class="alert"><%= alert %></p>
+        </div>
+      <% end %>
+
+      <div class="navbar is-dark" role="navigation" aria-label = "main navigation" >
+        <div class="navbar-brand">
+          <%= link_to root_path, class: 'navbar-item' do %>
+            <strong class="is-size-5">Private-Events</strong>
+          <% end %>
+        </div>
+
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <% if user_signed_in? %>
+                  <%= link_to 'Profile', current_user, class: 'button' %>
+                  <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'button' %>
+              <% else %>
+                  <%= link_to 'Log in', new_user_session_path, class: 'button is-light '%>
+                  <%= link_to 'Sign up', new_user_registration_path, class: 'button is-light ' %>
+              <% end %>
+            
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <%= yield %>
+
+      <footer class="footer py-5">
+        <div class="content has-text-centered">
+          <%= link_to "Private-Events", 
+            "https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby-on-rails/lessons/private-events", 
+            class: "has-text-weight-semibold has-text-info", target: "_blank"
+          %>
+          implementation by 
+          <%= link_to "derUbermenk", "https://github.com/derUbermenk", class: "has-text-info", target: "_blank" %>
+        </div> 
+      </footer>
+    </div>
   </body>
 </html>
