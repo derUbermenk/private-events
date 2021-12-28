@@ -1,0 +1,38 @@
+<div class="card my-6" id="index-card">
+  <div class="card-content">
+    <div class="content">
+      <p class='title is-size-5 has-text-weight-bold'>
+        <%= event.name %>
+      </p>
+      <p class='subtitle has-text-weight-light is-italic is-size-7'>
+        <%= event.location %> on <%= event.date.strftime("%e %B, %Y - %A") %>
+      </p>
+
+      <p>
+        Organized by: <%= link_to event.creator.name, event.creator %> 
+      </p>
+    </div>
+  </div>
+  <div class="card-footer">
+    <p class="card-footer-item">
+      <% if event.attendees.include? current_user %>
+        <%= link_to attendance_path(current_user.attendances.find_by(event_id: event.id)), method: :delete do %>
+          <span>
+            Cancel Attendance
+          </span>
+        <% end %>
+      <% else %>
+        <%= link_to attendances_path(event_id: event.id), method: :post do %>
+          <span>
+            Attend 
+          </span>
+        <% end %>
+      <% end %>
+    </p>
+    <p class="card-footer-item">
+      <%= link_to event do %>
+        <span>Show</span>
+      <% end %>
+    </p>
+  </div>
+</div>

@@ -1,33 +1,31 @@
-<p id="notice"><%= notice %></p>
+<div class="columns">
+  <div class="column is-three-quarters">
+    <!-- public events here 
+    Event name 
+    Date
+    Location
+    Creator
+    Kung ilan na yung sasali
 
-<h1>Events</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Data</th>
-      <th>Location</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @events.is_public.each do |event| %>
-      <tr>
-        <td><%= event.name %></td>
-        <td><%= event.date %></td>
-        <td><%= event.location %></td>
-        <td><%= event.creator.name%></td>
-        <td><%= link_to 'Attend', attendances_path(event_id: event.id), method: :post %> </td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Event', new_event_path %>
+    sort by date of occurence
+    -->
+    <div class="container">
+      <%= render(@events) || "There are no public events" %>
+    </div>
+  </div>
+  <div class="column">
+    <article class="panel my-6 mr-3">
+      <p class="panel-heading">Invitations</p>
+        <% if user_signed_in? %>
+          <% case current_user.invitations_received.any? %>
+            <% when true %>
+              <%= render(partial: 'invitations/invitation', collection: current_user.invitations_received) %> 
+            <% else %>
+              <p class='is-italic is-small panel-block'>No Invitations yet</p>
+            <% end %>
+        <% else %>
+          <p class='is-italic is-small panel-block'>Log in to view invitations</p>
+        <% end %>
+    </article>
+  </div>
+</div>

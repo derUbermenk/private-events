@@ -1,0 +1,19 @@
+<p class="panel-block" id="invitation-panel">
+    <span>
+      <%= link_to invitation.event do %>
+        <span class="has-text-weight-semibold"><%= invitation.event.name %></span>
+      <% end %>
+      | 
+      <%= link_to invitation.organizer do %>
+        <span class="has-text-weight-light is-size-7"><%= invitation.organizer.name%></span>
+      <% end %>
+    </span> 
+    <span>
+      <%= link_to attendances_path(event_id: invitation.event.id, invitation_id: invitation.id ), method: :post do %>
+        <button class="button is-dark is-small mx-1">Accept</button>
+      <% end %>
+      <%= link_to invitation_path(invitation), method: :delete do %>
+        <button class="button is-dark is-small mx-1">Reject</button>
+      <% end %>
+    </span>
+</p>

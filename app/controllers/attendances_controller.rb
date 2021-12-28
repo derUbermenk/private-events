@@ -5,7 +5,7 @@ class AttendancesController < ApplicationController
     current_user.attendances.create(attend_params)
 
     # destroy the invite if the linke is coming from an invite 
-    Invitation.find(params[:invitation_id]).destroy
+    Invitation.find(params[:invitation_id]).destroy if params[:invitations]
 
     redirect_back(fallback_location: root_path)
   end

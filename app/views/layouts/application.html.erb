@@ -34,8 +34,8 @@
           <div class="navbar-item">
             <div class="buttons">
               <% if user_signed_in? %>
-                  <%= link_to 'Profile', current_user, class: 'button' %>
-                  <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'button' %>
+                  <%= link_to 'Profile', current_user, class: 'button is-light' %>
+                  <%= link_to 'Log out', destroy_user_session_path, method: :delete, class: 'button is-light' %>
               <% else %>
                   <%= link_to 'Log in', new_user_session_path, class: 'button is-light '%>
                   <%= link_to 'Sign up', new_user_registration_path, class: 'button is-light ' %>
@@ -50,7 +50,7 @@
 
       <footer class="footer py-5">
         <div class="content has-text-centered">
-          <%= link_to "Private-Events", 
+          <%= link_to "Private Events", 
             "https://www.theodinproject.com/paths/full-stack-ruby-on-rails/courses/ruby-on-rails/lessons/private-events", 
             class: "has-text-weight-semibold has-text-info", target: "_blank"
           %>

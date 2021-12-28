@@ -32,7 +32,20 @@ footer {
   margin-top: auto;
 }
 
-a:hover {
+a:link{color:inherit}
+a:active{color:inherit}
+a:visited{color:inherit}
+a:hover{
+  color:gray;
   background-color: transparent;
-  text-decoration: none;
+}
+
+
+#index-card {
+  margin-left: 10rem;
+  margin-right: 4rem;
+}
+
+#invitation-panel{
+  justify-content: space-between;
 }
