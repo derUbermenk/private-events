@@ -10,7 +10,11 @@
     sort by date of occurence
     -->
     <div class="container">
-      <%= render(@events) || "There are no public events" %>
+      <% if @events.any? %>
+        <%= render(@events) %>
+      <% else %>
+        <span class="is-text-weight-light">There are no events available</span>
+      <% end %>
     </div>
   </div>
   <div class="column">
