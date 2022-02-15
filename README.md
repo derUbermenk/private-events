@@ -6,7 +6,7 @@
   See the project in action <a href="https://private-events-ch.herokuapp.com/">here</a>
 </p>
 
-<p>You can use the following credential to log in</p>
+<p>You can use the following credentials to log in</p>
 email: constant@email.com <br>
 password: constant@email.com
 
