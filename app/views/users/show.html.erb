@@ -57,9 +57,16 @@
   <div>
     <strong>Invites</strong><br>
     <% current_user.invitations_received.each do |invitation| %>
-      <%= invitation.event.name %> | 
-      <%= link_to 'Accept', attendances_path(event_id: invitation.event.id, invitation_id: invitation.id ), method: :post %>
-      <%= link_to 'Reject', invitation_path(invitation), method: :delete %>
+      <%= invitation.event.name %> 
+      <br>
+      <%= link_to attendances_path(event_id: invitation.event.id, invitation_id: invitation.id ), method: :post do %>
+        <button>Accept</button>
+      <% end %>
+      <%= link_to invitation_path(invitation), method: :delete do %>
+        <button>Reject</button>
+      <% end %>
+      <br>
+      <br>
     <% end %>
     <br>
   </div>
